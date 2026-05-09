@@ -2,13 +2,6 @@
 
 A QR Code generator engine written from scratch in Go.
 
-`goqr` implements the complete QR generation pipeline including:
-- Multi-mode encoding
-- Reed–Solomon error correction
-- QR matrix construction
-- Automatic mask selection
-- PNG / SVG / ASCII rendering
-
 This project was built as a low-level coding exercise focused on understanding the QR specification and implementing the full generation pipeline manually without relying on external libraries.
 
 ---
@@ -30,7 +23,6 @@ This project was built as a low-level coding exercise focused on understanding t
 - PNG renderer
 - SVG renderer
 - ASCII renderer
-- Modular package architecture
 - Benchmarks and validation tests
 
 ---
@@ -38,7 +30,7 @@ This project was built as a low-level coding exercise focused on understanding t
 ## Project Status
 
 - QR versions `1–9` are fully tested and scannable.
-- Higher versions are implemented structurally and generate successfully, but are currently considered experimental.
+- Higher versions are implemented structurally and generate successfully, but are considered experimental.
 
 ---
 
@@ -201,33 +193,6 @@ type Options struct {
 
 ---
 
-# Package Structure
-
-```text
-goqr/
-├── cmd/
-│   └── goqr/
-│       └── main.go
-│
-├── ecc/
-├── encode/
-├── internal/
-├── matrix/
-├── render/
-├── tools/
-├── utils/
-│
-├── qr.go
-├── options.go
-│
-├── benchmark_test.go
-├── validation_test.go
-├── README.md
-└── go.mod
-```
-
----
-
 # Encoding Pipeline
 
 The generator follows the standard QR generation pipeline:
@@ -254,21 +219,6 @@ Rendering
 
 ---
 
-# Benchmarks
-
-Example benchmark results:
-
-```text
-BenchmarkGenerate-16    	    6260	    272535 ns/op	  142745 B/op	    1070 allocs/op
-BenchmarkEncode-16      	   48980	     29599 ns/op	   27152 B/op	     182 allocs/op
-BenchmarkECC-16         	  391693	      3597 ns/op	    2968 B/op	      23 allocs/op
-BenchmarkMatrix-16      	    6868	    179105 ns/op	   60912 B/op	     450 allocs/op
-BenchmarkPNG-16         	   10000	    165002 ns/op	  344169 B/op	       6 allocs/op
-BenchmarkSVG-16         	   84844	     12871 ns/op	    7862 B/op	     193 allocs/op
-```
-
----
-
 # Design Goals
 
 In this project I focused on:
@@ -283,16 +233,14 @@ In this project I focused on:
 - Kanji mode support
 - ECI support
 - CLI utility
-- WebAssembly demo
 
 ---
 
 # Acknowledgements
 
-QR specification references and implementation research:
-- Thonky QR Code Tutorial
-- ISO/IEC 18004 documentation
-- ZXing reference implementation
+References I used for research:
+- [Thonky QR Code Tutorial](https://www.thonky.com/qr-code-tutorial/introduction)
+- [ISO/IEC 18004 documentation](https://cdi.mecon.gob.ar/bases/docelec/az2182.pdf)
 
 ---
 
