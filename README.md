@@ -241,9 +241,3 @@ In this project I focused on:
 References I used for research:
 - [Thonky QR Code Tutorial](https://www.thonky.com/qr-code-tutorial/introduction)
 - [ISO/IEC 18004 documentation](https://cdi.mecon.gob.ar/bases/docelec/az2182.pdf)
-
----
-
-# License
-
-MIT License
